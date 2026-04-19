@@ -9,25 +9,25 @@ The main objective of this project was to analyze daily Antarctic sea ice extent
 ## ⚙️ Mathematical Methodology
 
 ### 1. Extended Fourier Model
-To capture the strong seasonality of sea ice, an extended Fourier series was implemented. The function models the latitude of the ice edge over time (t) for each specific longitude angle:
+To capture the strong seasonality of sea ice, an extended Fourier series was implemented. The function models the latitude of the ice edge over time ($t$) for each specific longitude angle:
 
-f(t) = Σ [A_n * cos(2πn/T * (t - φ_n))] + B + C*t
+$$f(t)=\sum_{n=1}^{6}A_{n}\cos\left(\frac{2\pi n}{T}(t-\varphi_n)\right)+B+C \cdot t$$
 
-* **6 Harmonics:** Six cosine waves with different frequencies (n) and phase shifts (φ_n) capture complex annual and sub-annual cycles.
-* **Period (T):** Set to 365.25 days to accurately account for leap years.
-* **Linear Trend (C * t):** Captures long-term climatic tendencies and overall ice cover changes.
-* **Optimization:** Parameters were fitted using the Non-Linear Least Squares method (scipy.optimize.curve_fit with up to 20,000 evaluations to prevent premature convergence).
+* **6 Harmonics:** Six cosine waves with different frequencies ($n$) and phase shifts ($\varphi_n$) capture complex annual and sub-annual cycles.
+* **Period ($T$):** Set to 365.25 days to accurately account for leap years.
+* **Linear Trend ($C \cdot t$):** Captures long-term climatic tendencies and overall ice cover changes.
+* **Optimization:** Parameters were fitted using the Non-Linear Least Squares method (`scipy.optimize.curve_fit` with up to 20,000 evaluations to prevent premature convergence).
 
 ### 2. 3D Binary Spatial Grid
 For advanced spatial analysis, a 3D function was created:
 
-f(Lat, Lon, t) ∈ {0,1}
+$$f(Lat, Lon, t) \in \{0,1\}$$
 
-It maps the geographical space into a binary grid where 1 represents the presence of ice and 0 indicates open water. This allowed for granular tracking of the ice cover across millions of data points.
+It maps the geographical space into a binary grid where $1$ represents the presence of ice and $0$ indicates open water. This allowed for granular tracking of the ice cover across millions of data points.
 
 ## 📊 Dataset & Preprocessing
-* **Source Data:** daily_ice_edge.csv (containing measurements from October 26, 1978, to 2009).
-* **Data Cleaning:** Missing values (NaNs) were handled using time-based interpolation (method="time") to ensure data continuity.
+* **Source Data:** `daily_ice_edge.csv` (containing measurements from October 26, 1978, to 2009).
+* **Data Cleaning:** Missing values (NaNs) were handled using time-based interpolation (`method="time"`) to ensure data continuity.
 * **Transformations:** Geographical coordinates (latitude/longitude) were transformed into a polar coordinate system (radius and angle) and subsequently mapped to a 2D Cartesian plane (X, Y) for reliable visualization.
 
 ## 🚀 Technologies Used
