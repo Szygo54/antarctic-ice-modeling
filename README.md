@@ -46,6 +46,6 @@ It maps the geographical space into a binary grid where $1$ represents the prese
 ## 💻 Installation & Usage
 To run this project locally and generate your own models and animations:
 
-1. Clone the repository: `git clone [YOUR_REPO_LINK]`
+1. Clone the repository: `git clone https://github.com/Szygo54/antarctic-ice-modeling`
 2. Install dependencies: `pip install -r requirements.txt`
 3. Run the notebook `antarctic_sea_ice_modeling.ipynb` to observe data transformations, model fitting, and visualization.
